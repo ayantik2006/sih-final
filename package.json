@@ -6,12 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint . --max-warnings 0",
+    "type-check": "tsc --noEmit",
+    "ci": "npm run type-check && npm run lint && npm run build"
   },
   "dependencies": {
+    "lucide-react": "^1.45.0",
     "next": "16.3.5",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "recharts": "^3.10.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
