@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import { RefreshCw, User, ShieldCheck, Activity, Database, LineChart, Cpu, Code2 } from 'lucide-react';
+import { RefreshCw, User, ShieldCheck, Activity, Database, LineChart, Cpu, Code2, Sparkles } from 'lucide-react';
 
-export type TabType = 'home' | 'routes' | 'analysis' | 'scrapers' | 'data' | 'api';
+export type TabType = 'home' | 'routes' | 'analysis' | 'scrapers' | 'cleaning' | 'data' | 'api';
 
 interface HeaderProps {
   activeTab: TabType;
@@ -24,7 +24,7 @@ export default function Header({
 }: HeaderProps) {
   return (
     <header className="w-full bg-white border-b border-[#e5e7eb] sticky top-0 z-50 shadow-xs">
-      {/* Top Government Banner */}
+      {/* Top Government Banner */ }
       <div className="bg-[#003f87] text-white text-xs py-1.5 px-4 sm:px-8 flex justify-between items-center font-medium">
         <div className="flex items-center space-x-2">
           <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -37,10 +37,10 @@ export default function Header({
         </div>
       </div>
 
-      {/* Main Header Row */}
+      {/* Main Header Row */ }
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Logo & Title */}
-        <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab('home')}>
+        {/* Logo & Title */ }
+        <div className="flex items-center space-x-3 cursor-pointer" onClick={ () => setActiveTab('home') }>
           <div className="w-10 h-10 rounded bg-[#003f87] text-white flex items-center justify-center font-bold text-lg shadow-sm border border-[#002d62]">
             APIx
           </div>
@@ -56,29 +56,28 @@ export default function Header({
           </div>
         </div>
 
-        {/* Right Side Status & User Session */}
+        {/* Right Side Status & User Session */ }
         <div className="flex items-center space-x-4">
           <div className="hidden sm:flex items-center space-x-2 text-xs text-[#6b7280] bg-[#f9fafb] px-2.5 py-1.5 rounded border border-[#e5e7eb]">
             <span>Last updated: <strong className="text-[#1f2937]">2m ago</strong></span>
             <button
-              onClick={onRefresh}
-              disabled={isRefreshing}
+              onClick={ onRefresh }
+              disabled={ isRefreshing }
               title="Refresh real-time index data"
               className="p-1 hover:bg-[#e5e7eb] rounded transition-colors text-[#003f87]"
             >
-              <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
+              <RefreshCw className={ `w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}` } />
             </button>
           </div>
 
           <button
-            onClick={onOpenLogin}
-            className={`flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded transition-all border ${
-              userRole === 'analyst'
+            onClick={ onOpenLogin }
+            className={ `flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded transition-all border ${userRole === 'analyst'
                 ? 'bg-[#003f87] text-white border-[#003f87] hover:bg-[#002d62]'
                 : 'bg-white text-[#003f87] border-[#003f87] hover:bg-[#f9fafb]'
-            }`}
+              }` }
           >
-            {userRole === 'analyst' ? (
+            { userRole === 'analyst' ? (
               <>
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                 <span>MoSPI Analyst Mode</span>
@@ -88,19 +87,20 @@ export default function Header({
                 <User className="w-3.5 h-3.5" />
                 <span>Official Login</span>
               </>
-            )}
+            ) }
           </button>
         </div>
       </div>
 
-      {/* Navigation Tabs Bar */}
+      {/* Navigation Tabs Bar */ }
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 border-t border-[#f3f4f6]">
         <nav className="flex space-x-6 overflow-x-auto no-scrollbar py-0.5">
-          {[
+          { [
             { id: 'home', label: 'Main Index View', icon: LineChart },
             { id: 'routes', label: 'Route Explorer', icon: Activity },
             { id: 'analysis', label: 'Market Analysis', icon: Database },
             { id: 'scrapers', label: 'Scraping Engine & Compliance', icon: Cpu, badge: 'Scrapers' },
+            { id: 'cleaning', label: 'Cleaning & IQR Pipeline', icon: Sparkles },
             { id: 'data', label: 'Data Explorer', icon: Database },
             { id: 'api', label: 'REST API & Docs', icon: Code2 },
           ].map((tab) => {
@@ -108,24 +108,23 @@ export default function Header({
             const isActive = activeTab === tab.id;
             return (
               <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id as TabType)}
-                className={`py-3 text-xs sm:text-sm font-medium flex items-center space-x-2 whitespace-nowrap transition-all border-b-2 ${
-                  isActive
+                key={ tab.id }
+                onClick={ () => setActiveTab(tab.id as TabType) }
+                className={ `py-3 text-xs sm:text-sm font-medium flex items-center space-x-2 whitespace-nowrap transition-all border-b-2 ${isActive
                     ? 'border-[#003f87] text-[#003f87] font-bold'
                     : 'border-transparent text-[#6b7280] hover:text-[#003f87] hover:border-[#d0d0d0]'
-                }`}
+                  }` }
               >
-                <IconComponent className={`w-4 h-4 ${isActive ? 'text-[#003f87]' : 'text-[#6b7280]'}`} />
-                <span>{tab.label}</span>
-                {tab.badge && (
+                <IconComponent className={ `w-4 h-4 ${isActive ? 'text-[#003f87]' : 'text-[#6b7280]'}` } />
+                <span>{ tab.label }</span>
+                { tab.badge && (
                   <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded ml-1">
                     Live
                   </span>
-                )}
+                ) }
               </button>
             );
-          })}
+          }) }
         </nav>
       </div>
     </header>
