@@ -7,6 +7,7 @@ import HomeView from '@/components/HomeView';
 import RouteExplorerView from '@/components/RouteExplorerView';
 import MarketAnalysisView from '@/components/MarketAnalysisView';
 import ScrapingEngineView from '@/components/ScrapingEngineView';
+import DataPipelineView from '@/components/DataPipelineView';
 import DataExplorerView from '@/components/DataExplorerView';
 import ApiHubView from '@/components/ApiHubView';
 import LoginModal from '@/components/LoginModal';
@@ -42,6 +43,7 @@ export default function Page() {
         {activeTab === 'routes' && <RouteExplorerView />}
         {activeTab === 'analysis' && <MarketAnalysisView />}
         {activeTab === 'scrapers' && <ScrapingEngineView />}
+        {activeTab === 'cleaning' && <DataPipelineView />}
         {activeTab === 'data' && <DataExplorerView />}
         {activeTab === 'api' && <ApiHubView />}
       </main>
