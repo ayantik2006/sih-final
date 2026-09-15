@@ -10,7 +10,6 @@ import {
   ExternalLink,
   ShieldCheck,
   Key,
-  Gauge,
   Info,
 } from 'lucide-react';
 
