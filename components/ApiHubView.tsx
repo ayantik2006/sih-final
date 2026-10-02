@@ -97,7 +97,7 @@ type RoleType = 'none' | 'nso' | 'rbi' | 'custom';
 export default function ApiHubView() {
   const [selectedEndpoint, setSelectedEndpoint] = useState<string>('/api/public/summary');
   const [apiBaseUrl, setApiBaseUrl] = useState<string>(
-    process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'
+    process.env.NEXT_PUBLIC_API_BASE_URL || 'https://sih-final-3-7n6y.onrender.com/'
   );
   const [selectedRole, setSelectedRole] = useState<RoleType>('none');
   const [customKey, setCustomKey] = useState<string>('');
@@ -239,7 +239,7 @@ export default function ApiHubView() {
                 value={apiBaseUrl}
                 onChange={(e) => setApiBaseUrl(e.target.value)}
                 className="w-full text-xs font-mono px-3 py-1.5 rounded-lg border border-ink-200 bg-white focus:outline-none focus:border-navy-700"
-                placeholder="http://localhost:8000"
+                placeholder="https://sih-final-3-7n6y.onrender.com/"
               />
             </div>
 
