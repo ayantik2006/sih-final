@@ -239,7 +239,7 @@ export default function ApiHubView() {
                 value={apiBaseUrl}
                 onChange={(e) => setApiBaseUrl(e.target.value)}
                 className="w-full text-xs font-mono px-3 py-1.5 rounded-lg border border-ink-200 bg-white focus:outline-none focus:border-navy-700"
-                placeholder="https://sih-final-3-7n6y.onrender.com/"
+                placeholder="http://localhost:8000"
               />
             </div>
 
