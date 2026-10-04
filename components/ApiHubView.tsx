@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Play, Copy, Check, Terminal, ExternalLink, ShieldCheck } from './icons';
+import { Play, Loader2, Copy, Check, Terminal, ExternalLink, ShieldCheck } from './icons';
 import { StatusTag } from './ui/status-tag';
 
 interface EndpointConfig {
@@ -372,7 +372,11 @@ export default function ApiHubView() {
                 disabled={isLoading}
                 className="bg-navy-700 text-white hover:bg-navy-800 text-xs font-semibold px-4 py-2 rounded-lg flex items-center justify-center space-x-1.5 disabled:opacity-50 transition-colors cursor-pointer"
               >
-                <Play className="w-3.5 h-3.5 fill-current" />
+                {isLoading ? (
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                ) : (
+                  <Play className="w-3.5 h-3.5 fill-current" />
+                )}
                 <span>{isLoading ? 'Executing Request...' : 'Send Live Request'}</span>
               </button>
             </div>
